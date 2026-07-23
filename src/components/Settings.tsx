@@ -173,22 +173,6 @@ export function Settings() {
             </div>
           </div>
         </a>
-        <a
-          href="https://waha.devlike.pro/docs/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between p-4 rounded-xl bg-app-surface border border-app-border hover:border-[#25D366]/30 transition-all group"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <ExternalLink className="w-4 h-4 text-blue-400" />
-            </div>
-            <div>
-              <p className="text-app-text text-sm font-medium">API Docs</p>
-              <p className="text-app-text-muted text-xs">View WAHA documentation</p>
-            </div>
-          </div>
-        </a>
       </div>
     </div>
   );

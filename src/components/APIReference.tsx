@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Copy, Check, ChevronDown, Search, ExternalLink, Code, Terminal, BookOpen } from 'lucide-react';
+import { Copy, Check, ChevronDown, Search, Code, Terminal, BookOpen } from 'lucide-react';
 
 interface Endpoint {
   method: string;
@@ -928,9 +928,6 @@ export function APIReference() {
           </h1>
           <p className="text-app-text-muted mt-1">{totalEndpoints} endpoints across {docsApiData.length} categories — with cURL & Python examples</p>
         </div>
-        <a href="https://waha.devlike.pro/docs/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-app-surface border border-app-border text-sm text-app-text-secondary hover:text-white hover:border-app-border-hover transition-all">
-          <ExternalLink className="w-4 h-4" /> Official Docs
-        </a>
       </div>
 
       <div className="relative">
