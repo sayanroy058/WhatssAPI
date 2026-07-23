@@ -18,6 +18,10 @@ interface Category {
   endpoints: Endpoint[];
 }
 
+const DOCS_API_BASE_URL = 'https://whatssapi.vercel.app';
+
+const replaceDocsBaseUrl = (value: string) => value.replace(/http:\/\/localhost:3000/g, DOCS_API_BASE_URL);
+
 const apiData: Category[] = [
   {
     name: 'Sessions',
@@ -825,6 +829,15 @@ const apiData: Category[] = [
   },
 ];
 
+const docsApiData = apiData.map(category => ({
+  ...category,
+  endpoints: category.endpoints.map(endpoint => ({
+    ...endpoint,
+    curl: replaceDocsBaseUrl(endpoint.curl),
+    python: replaceDocsBaseUrl(endpoint.python),
+  })),
+}));
+
 const methodColors: Record<string, string> = {
   GET: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
   POST: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
@@ -898,12 +911,12 @@ export function APIReference() {
     setExpandedCategories(prev => { const next = new Set(prev); if (next.has(name)) next.delete(name); else next.add(name); return next; });
   };
 
-  const filtered = apiData.map(cat => ({
+  const filtered = docsApiData.map(cat => ({
     ...cat,
     endpoints: cat.endpoints.filter(ep => ep.path.toLowerCase().includes(searchTerm.toLowerCase()) || ep.description.toLowerCase().includes(searchTerm.toLowerCase()) || ep.method.toLowerCase().includes(searchTerm.toLowerCase())),
   })).filter(cat => cat.endpoints.length > 0);
 
-  const totalEndpoints = apiData.reduce((sum, cat) => sum + cat.endpoints.length, 0);
+  const totalEndpoints = docsApiData.reduce((sum, cat) => sum + cat.endpoints.length, 0);
 
   return (
     <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
@@ -913,7 +926,7 @@ export function APIReference() {
             <BookOpen className="w-7 h-7 text-[#25D366]" />
             API Reference
           </h1>
-          <p className="text-app-text-muted mt-1">{totalEndpoints} endpoints across {apiData.length} categories — with cURL & Python examples</p>
+          <p className="text-app-text-muted mt-1">{totalEndpoints} endpoints across {docsApiData.length} categories — with cURL & Python examples</p>
         </div>
         <a href="https://waha.devlike.pro/docs/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-app-surface border border-app-border text-sm text-app-text-secondary hover:text-white hover:border-app-border-hover transition-all">
           <ExternalLink className="w-4 h-4" /> Official Docs
@@ -926,7 +939,7 @@ export function APIReference() {
       </div>
 
       <div className="flex gap-2 flex-wrap">
-        {apiData.map(cat => (
+        {docsApiData.map(cat => (
           <a key={cat.name} href={`#category-${cat.name.toLowerCase().replace(/[ /]/g, '-')}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-app-surface border border-app-border text-app-text-secondary hover:text-white hover:border-app-border-hover text-xs transition-all">
             <span>{cat.icon}</span> {cat.name} <span className="text-app-text-muted">({cat.endpoints.length})</span>
           </a>
