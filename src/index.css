@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme */
+  --app-bg: #f0f2f5;
+  --app-surface: #ffffff;
+  --app-surface-hover: #f5f6f8;
+  --app-surface-alt: #f0f2f5;
+  --app-border: #e4e6ea;
+  --app-border-hover: #d1d5db;
+  --app-text: #1a1d23;
+  --app-text-secondary: #6b7280;
+  --app-text-muted: #9ca3af;
+  --app-input: #f0f2f5;
+}
+
+.dark {
+  /* Dark theme */
+  --app-bg: #0d1117;
+  --app-surface: #11161e;
+  --app-surface-hover: #1a202c;
+  --app-surface-alt: #0d1117;
+  --app-border: #1e2532;
+  --app-border-hover: #2a3040;
+  --app-text: #e4e6eb;
+  --app-text-secondary: #9ca3af;
+  --app-text-muted: #6b7280;
+  --app-input: #0d1117;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 3px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #2a2f3a 25%, #353b48 50%, #2a2f3a 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
