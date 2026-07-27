@@ -1,5 +1,16 @@
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import {
+  LayoutDashboard,
+  Smartphone,
+  MessagesSquare,
+  Settings,
+  Menu,
+  ChevronRight,
+  BookOpen,
+  Sun,
+  Moon,
+} from 'lucide-react';
 import Logo from '../assets/Logo.png';
 
 import { useTheme } from '../context/ThemeContext';
