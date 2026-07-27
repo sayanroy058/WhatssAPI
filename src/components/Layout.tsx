@@ -1,17 +1,7 @@
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Smartphone,
-  MessagesSquare,
-  Settings,
-  Menu,
-  Zap,
-  ChevronRight,
-  BookOpen,
-  Sun,
-  Moon,
-} from 'lucide-react';
+import Logo from '../assets/Logo.png';
+
 import { useTheme } from '../context/ThemeContext';
 
 interface LayoutProps {
@@ -54,11 +44,11 @@ export function Layout({ children }: LayoutProps) {
         <div className="p-5 border-b border-app-border">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/20">
-              <Zap className="w-5 h-5 text-white" />
+              <img src={Logo} alt="RelayX Logo" className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-app-text font-bold text-lg tracking-tight">WAHA</h1>
-              <p className="text-app-text-muted text-xs">WhatsApp API Dashboard</p>
+              <h1 className="text-app-text font-bold text-lg tracking-tight">RelayX</h1>
+              <p className="text-app-text-muted text-xs">RelayX API Dashboard</p>
             </div>
           </div>
         </div>
@@ -97,7 +87,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="p-4 border-t border-app-border space-y-3">
           <div className="flex items-center gap-2 px-2">
             <div className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" />
-            <span className="text-xs text-app-text-muted">WAHA Platform</span>
+            <span className="text-xs text-app-text-muted">RelayX Platform</span>
           </div>
           <button
             onClick={toggleTheme}
@@ -124,7 +114,7 @@ export function Layout({ children }: LayoutProps) {
             <Menu className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-2">
-            <span className="text-app-text font-semibold text-sm">WAHA Dashboard</span>
+            <span className="text-app-text font-semibold text-sm">RelayX Dashboard</span>
           </div>
         </header>
 

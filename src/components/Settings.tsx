@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Save, Check, AlertCircle, Key, Globe, Shield, ExternalLink } from 'lucide-react';
-import { getConfig, saveConfig, checkHealth, type WahaConfig } from '../api/wahaApi';
+import { getConfig, saveConfig, checkHealth, type RelayXConfig } from '../api/wahaApi';
 
 export function Settings() {
-  const [config, setConfig] = useState<WahaConfig>(() => {
+  const [config, setConfig] = useState<RelayXConfig>(() => {
     const c = getConfig();
     // If using the default proxy setup, show empty for clarity
     return c;
@@ -35,7 +35,7 @@ export function Settings() {
       {/* Header */}
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-app-text">Settings</h1>
-        <p className="text-app-text-muted mt-1">Configure your WAHA API connection</p>
+        <p className="text-app-text-muted mt-1">Configure your RelayX API connection</p>
       </div>
 
       {/* Connection Settings */}
@@ -46,7 +46,7 @@ export function Settings() {
           </div>
           <div>
             <h2 className="text-lg font-semibold text-app-text">Connection</h2>
-            <p className="text-app-text-muted text-sm">WAHA API server configuration</p>
+            <p className="text-app-text-muted text-sm">RelayX API server configuration</p>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export function Settings() {
               value={config.apiKey}
               onChange={e => setConfig({ ...config, apiKey: e.target.value })}
               className="w-full px-4 py-2.5 rounded-lg bg-app-bg border border-app-border text-white placeholder-app-text-muted focus:outline-none focus:border-[#25D366] transition-colors text-sm font-mono"
-              placeholder="Your WAHA API key"
+              placeholder="Your RelayX API key"
             />
           </div>
         </div>
@@ -87,12 +87,12 @@ export function Settings() {
             {testResult ? (
               <>
                 <Check className="w-4 h-4" />
-                Connection successful! WAHA API is reachable.
+                Connection successful! RelayX API is reachable.
               </>
             ) : (
               <>
                 <AlertCircle className="w-4 h-4" />
-                Connection failed. Is WAHA running at the configured URL?
+                Connection failed. Is RelayX running at the configured URL?
               </>
             )}
           </div>
@@ -141,7 +141,7 @@ export function Settings() {
         <div className="space-y-3 text-sm">
           <div className="p-3 rounded-lg bg-app-bg border border-app-border">
             <p className="text-app-text-secondary">
-              <span className="text-app-text font-medium">Dashboard:</span> Access the WAHA dashboard at{' '}
+              <span className="text-app-text font-medium">Dashboard:</span> Access the RelayX dashboard at{' '}
               <code className="px-1.5 py-0.5 rounded bg-[#1e2532] text-[#25D366] text-xs">{config.baseUrl}</code>
               {' '}with username <code className="px-1.5 py-0.5 rounded bg-[#1e2532] text-white text-xs">admin</code>
             </p>
@@ -168,7 +168,7 @@ export function Settings() {
               <ExternalLink className="w-4 h-4 text-[#25D366]" />
             </div>
             <div>
-              <p className="text-app-text text-sm font-medium">WAHA Dashboard</p>
+              <p className="text-app-text text-sm font-medium">RelayX Dashboard</p>
               <p className="text-app-text-muted text-xs">Open the native dashboard</p>
             </div>
           </div>

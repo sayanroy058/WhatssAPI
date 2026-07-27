@@ -4,19 +4,19 @@ import axios from 'axios';
 const DEFAULT_BASE_URL = '';
 const DEFAULT_API_KEY = 'f07d255624d14f74a4b5239c718122a4';
 
-export interface WahaConfig {
+export interface RelayXConfig {
   baseUrl: string;
   apiKey: string;
 }
 
-export function getConfig(): WahaConfig {
-  const saved = localStorage.getItem('waha_config');
+export function getConfig(): RelayXConfig {
+  const saved = localStorage.getItem('relayx_config');
   if (saved) return JSON.parse(saved);
   return { baseUrl: DEFAULT_BASE_URL, apiKey: DEFAULT_API_KEY };
 }
 
-export function saveConfig(config: WahaConfig) {
-  localStorage.setItem('waha_config', JSON.stringify(config));
+export function saveConfig(config: RelayXConfig) {
+  localStorage.setItem('relayx_config', JSON.stringify(config));
 }
 
 export function getApi() {
