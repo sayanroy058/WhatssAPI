@@ -41,7 +41,7 @@ export function Sessions() {
       const data = await getSessions();
       setSessions(data);
     } catch {
-      setError('Failed to fetch sessions. Is WAHA running?');
+      setError('Failed to fetch sessions. Is RelayX running?');
     } finally {
       setLoading(false);
     }
@@ -60,7 +60,7 @@ export function Sessions() {
       setShowCreate(false);
       setNewName('default');
     } catch {
-      setError('Failed to create session. Check if WAHA is running.');
+      setError('Failed to create session. Check if RelayX is running.');
     } finally {
       await fetchSessions();
       setActionLoading(null);

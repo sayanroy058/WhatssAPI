@@ -147,7 +147,7 @@ const apiData: Category[] = [
         method: 'POST', path: '/api/sendText',
         description: 'Send a text message with optional mentions & link preview',
         payload: `{"session":"default","chatId":"919876543210@c.us","text":"Hello! 👋","mentions":["919876543210@c.us"]}`,
-        curl: `curl -X POST "http://localhost:3000/api/sendText" \\\n  -H "X-Api-Key: YOUR_API_KEY" -H "Content-Type: application/json" \\\n  -d '{"session":"default","chatId":"919876543210@c.us","text":"Hello from WAHA!"}'`,
+        curl: `curl -X POST "http://localhost:3000/api/sendText" \\\n  -H "X-Api-Key: YOUR_API_KEY" -H "Content-Type: application/json" \\\n  -d '{"session":"default","chatId":"919876543210@c.us","text":"Hello from RelayX!"}'`,
         python: `import requests\nr = requests.post("http://localhost:3000/api/sendText", json={"session":"default","chatId":"919876543210@c.us","text":"Hello!"}, headers={"X-Api-Key":"YOUR_API_KEY"})\nprint(r.json())`,
         note: 'chatId: [number]@c.us (individual) or [id]@g.us (group). Country code without +.',
       },
@@ -729,7 +729,7 @@ const apiData: Category[] = [
     endpoints: [
       {
         method: 'GET', path: '/api/server/version',
-        description: 'Get WAHA server version',
+        description: 'Get RelayX server version',
         curl: `curl -X GET "http://localhost:3000/api/server/version" \\\n  -H "X-Api-Key: YOUR_API_KEY"`,
         python: `import requests\nr = requests.get("http://localhost:3000/api/server/version", headers={"X-Api-Key":"YOUR_API_KEY"})\nprint(r.json())`,
       },
@@ -747,10 +747,10 @@ const apiData: Category[] = [
       },
       {
         method: 'POST', path: '/api/server/stop',
-        description: 'Gracefully stop the WAHA server',
+        description: 'Gracefully stop the RelayX server',
         curl: `curl -X POST "http://localhost:3000/api/server/stop" \\\n  -H "X-Api-Key: YOUR_API_KEY"`,
         python: `import requests\nr = requests.post("http://localhost:3000/api/server/stop", headers={"X-Api-Key":"YOUR_API_KEY"})\nprint(r.json())`,
-        note: '⚠️ This shuts down the entire WAHA server.',
+        note: '⚠️ This shuts down the entire RelayX server.',
       },
       {
         method: 'GET', path: '/api/server/debug/cpu',
@@ -784,7 +784,7 @@ const apiData: Category[] = [
       },
       {
         method: 'GET', path: '/api/version',
-        description: 'Get WAHA version (alias for server version)',
+        description: 'Get RelayX version (alias for server version)',
         curl: `curl -X GET "http://localhost:3000/api/version" \\\n  -H "X-Api-Key: YOUR_API_KEY"`,
         python: `import requests\nr = requests.get("http://localhost:3000/api/version", headers={"X-Api-Key":"YOUR_API_KEY"})\nprint(r.json())`,
       },
@@ -970,9 +970,9 @@ export function APIReference() {
 
       <div className="bg-app-surface rounded-xl border border-app-border p-6">
         <h3 className="text-app-text font-semibold mb-3">🔐 Authentication</h3>
-        <p className="text-app-text-secondary text-sm mb-3">All API requests require the <code className="px-1.5 py-0.5 rounded bg-app-bg text-[#25D366] text-xs">X-Api-Key</code> header with your WAHA API key.</p>
+        <p className="text-app-text-secondary text-sm mb-3">All API requests require the <code className="px-1.5 py-0.5 rounded bg-app-bg text-[#25D366] text-xs">X-Api-Key</code> header with your RelayX API key.</p>
         <div className="bg-app-bg border border-app-border rounded-lg p-3">
-          <pre className="text-xs text-app-text font-mono whitespace-pre-wrap">{`# Set in .env:\nWAHA_API_KEY=your-secret-api-key\n# Header:\nX-Api-Key: your-secret-api-key`}</pre>
+          <pre className="text-xs text-app-text font-mono whitespace-pre-wrap">{`# Set in .env:\nRelayX_API_KEY=your-secret-api-key\n# Header:\nX-Api-Key: your-secret-api-key`}</pre>
         </div>
       </div>
 
@@ -986,7 +986,7 @@ export function APIReference() {
       </div>
 
       <div className="text-center pb-8">
-        <p className="text-app-text-muted text-xs">Synced from WAHA OpenAPI spec. For latest updates visit <a href="https://waha.devlike.pro/docs/" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline">waha.devlike.pro/docs</a> or <a href="https://github.com/devlikeapro/waha" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline">GitHub</a></p>
+        <p className="text-app-text-muted text-xs">Synced from RelayX OpenAPI spec. For latest updates visit <a href="https://waha.devlike.pro/docs/" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline">waha.devlike.pro/docs</a> or <a href="https://github.com/devlikeapro/waha" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline">GitHub</a></p>
       </div>
     </div>
   );
