@@ -20,7 +20,7 @@ interface LayoutProps {
 }
 
 const navItems = [
-  { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/sessions', icon: Smartphone, label: 'Sessions' },
   { to: '/chats', icon: MessagesSquare, label: 'Chats' },
   { to: '/api-docs', icon: BookOpen, label: 'API Docs' },
@@ -67,8 +67,8 @@ export function Layout({ children }: LayoutProps) {
         {/* Navigation */}
         <nav className="flex-1 p-3 space-y-1">
           {navItems.map(({ to, icon: Icon, label }) => {
-            const isActive = to === '/'
-              ? location.pathname === '/'
+            const isActive = to === '/dashboard'
+              ? location.pathname === '/dashboard'
               : location.pathname.startsWith(to);
             return (
               <NavLink
