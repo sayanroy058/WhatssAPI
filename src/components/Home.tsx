@@ -175,12 +175,10 @@ export function Home() {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto">
-          <div className="relative bg-app-surface rounded-2xl border-2 border-[#25D366] shadow-xl shadow-[#25D366]/10 overflow-hidden">
-            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#25D366] text-white text-xs font-semibold rounded-bl-lg">
-              MOST POPULAR
-            </div>
-            <div className="p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {/* Monthly plan */}
+          <div className="relative bg-app-surface rounded-2xl border border-app-border shadow-lg overflow-hidden flex flex-col">
+            <div className="p-8 flex-1 flex flex-col">
               <div className="flex items-center gap-2 text-app-text-secondary text-sm">
                 <InfinityIcon className="w-4 h-4 text-[#25D366]" />
                 Unlimited Plan
@@ -195,9 +193,9 @@ export function Home() {
 
               <Link
                 to="/dashboard"
-                className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-semibold hover:bg-[#1fb855] transition-colors shadow-lg shadow-[#25D366]/30"
+                className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-app-surface border border-app-border text-app-text font-semibold hover:border-app-border-hover transition-colors"
               >
-                Subscribe Now
+                Subscribe Monthly
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
@@ -213,10 +211,49 @@ export function Home() {
               </div>
             </div>
           </div>
-          <p className="mt-4 text-center text-xs text-app-text-muted">
-            Prices in INR. billed monthly. Cancel anytime — no long-term contracts.
-          </p>
+
+          {/* Yearly plan */}
+          <div className="relative bg-app-surface rounded-2xl border-2 border-[#25D366] shadow-xl shadow-[#25D366]/10 overflow-hidden flex flex-col">
+            <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#25D366] text-white text-xs font-semibold rounded-bl-lg">
+              SAVE ₹2400
+            </div>
+            <div className="p-8 flex-1 flex flex-col">
+              <div className="flex items-center gap-2 text-app-text-secondary text-sm">
+                <InfinityIcon className="w-4 h-4 text-[#25D366]" />
+                Unlimited Plan · Yearly
+              </div>
+              <div className="mt-4 flex items-end gap-1">
+                <span className="text-5xl font-extrabold text-app-text">₹12000</span>
+                <span className="text-app-text-muted mb-1.5">/ year</span>
+              </div>
+              <p className="mt-2 text-sm text-app-text-secondary">
+                Pay once a year and save ₹2400 — equivalent of 2 months free.
+              </p>
+
+              <Link
+                to="/dashboard"
+                className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-semibold hover:bg-[#1fb855] transition-colors shadow-lg shadow-[#25D366]/30"
+              >
+                Subscribe Yearly
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+
+              <div className="mt-8 space-y-3">
+                {planFeatures.map(feature => (
+                  <div key={feature} className="flex items-start gap-3">
+                    <div className="mt-0.5 w-5 h-5 rounded-full bg-[#25D366]/15 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-[#25D366]" />
+                    </div>
+                    <span className="text-sm text-app-text">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
+        <p className="mt-6 text-center text-xs text-app-text-muted">
+          Prices in INR. Cancel anytime — no long-term contracts.
+        </p>
       </section>
 
       {/* CTA */}
@@ -249,7 +286,7 @@ export function Home() {
             },
             {
               q: 'How much does the subscription cost?',
-              a: 'The Unlimited Plan costs ₹1200 per month, billed monthly. It includes full API access, multiple sessions, webhooks, and priority support.',
+              a: 'The Unlimited Plan costs ₹1200 per month, billed monthly, or ₹12000 per year (saving you ₹2400 — the equivalent of 2 months free). Both include full API access, multiple sessions, webhooks, and priority support.',
             },
             {
               q: 'Can I cancel anytime?',
