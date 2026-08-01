@@ -72,13 +72,13 @@ export function Home() {
           </nav>
           <div className="flex items-center gap-3">
             <Link
-              to="/dashboard"
+              to="/login"
               className="text-sm text-app-text-secondary hover:text-app-text transition-colors hidden sm:inline"
             >
               Sign in
             </Link>
             <Link
-              to="/dashboard"
+              to="/login"
               className="text-sm font-medium px-4 py-2 rounded-lg bg-[#25D366] text-white hover:bg-[#1fb855] transition-colors shadow-lg shadow-[#25D366]/20"
             >
               Get Started

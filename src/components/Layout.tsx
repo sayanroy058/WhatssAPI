@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Smartphone,
@@ -10,10 +10,12 @@ import {
   BookOpen,
   Sun,
   Moon,
+  LogOut,
 } from 'lucide-react';
 import Logo from '../assets/Logo.png';
 
 import { useTheme } from '../context/ThemeContext';
+import { logout } from '../auth';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,7 +32,13 @@ const navItems = [
 export function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { replace: true });
+  };
 
   return (
     <div className="flex h-screen bg-app-bg">
@@ -106,6 +114,12 @@ export function Layout({ children }: LayoutProps) {
             ) : (
               <><Moon className="w-4 h-4" /> Dark Mode</>
             )}
+          </button>
+          <button
+            onClick={handleLogout}
+            className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-app-bg border border-app-border text-app-text-secondary hover:text-app-text hover:border-app-border-hover transition-all text-xs"
+          >
+            <LogOut className="w-4 h-4" /> Logout
           </button>
         </div>
       </aside>
