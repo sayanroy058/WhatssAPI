@@ -38,10 +38,18 @@ export function Payment() {
     if (!file) return;
     setUploading(true);
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       const dataUrl = reader.result as string;
-      localStorage.setItem(`relayx_payment_screenshot_${plan}`, dataUrl);
       setScreenshot(dataUrl);
+      try {
+        await fetch('/api/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ plan, dataUrl }),
+        });
+      } catch {
+        // Upload failed silently; the local preview is still shown to the user.
+      }
       setUploading(false);
     };
     reader.readAsDataURL(file);
