@@ -63,9 +63,7 @@ export function Home() {
       <header className="sticky top-0 z-30 backdrop-blur-md bg-app-surface/80 border-b border-app-border">
         <div className="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/20">
-              <img src={Logo} alt="RelayX Logo" className="w-7 h-7" />
-            </div>
+            <img src={Logo} alt="RelayX Logo" className="h-10 w-auto" />
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm text-app-text-secondary">
             <a href="#features" className="hover:text-app-text transition-colors">Features</a>
