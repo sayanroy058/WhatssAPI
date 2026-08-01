@@ -62,9 +62,7 @@ export function Layout({ children }: LayoutProps) {
         {/* Logo */}
         <div className="p-5 border-b border-app-border">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/20">
-              <img src={Logo} alt="RelayX Logo" className="w-8 h-8" />
-            </div>
+            <img src={Logo} alt="RelayX Logo" className="h-10 w-auto" />
           </div>
         </div>
 
