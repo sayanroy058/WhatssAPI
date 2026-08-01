@@ -1,11 +1,12 @@
 import { useEffect, useState, type ChangeEvent } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Check, Upload, Clock, Copy, InfinityIcon } from 'lucide-react';
+import { Check, Upload, Clock, Copy, InfinityIcon, Loader2, KeyRound } from 'lucide-react';
 import Logo from '../assets/Logo.png';
 import MonthlyQR from '../assets/Monthly QR.png';
 import YearlyQR from '../assets/Yearly QR.png';
 
 const WAIT_SECONDS = 20;
+const GENERATING_SECONDS = 3;
 
 const planFeatures = [
   'Unlimited WhatsApp messages',
@@ -26,6 +27,8 @@ export function Payment() {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [credentialsReady, setCredentialsReady] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -33,6 +36,15 @@ export function Payment() {
     const timer = setInterval(() => setSecondsLeft(s => Math.max(0, s - 1)), 1000);
     return () => clearInterval(timer);
   }, [secondsLeft]);
+
+  useEffect(() => {
+    if (!generating) return;
+    const timer = setTimeout(() => {
+      setGenerating(false);
+      setCredentialsReady(true);
+    }, GENERATING_SECONDS * 1000);
+    return () => clearTimeout(timer);
+  }, [generating]);
 
   const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -58,6 +70,7 @@ export function Payment() {
         setUploadError('Could not save the screenshot to storage. It is only visible in this browser session.');
       }
       setUploading(false);
+      setGenerating(true);
     };
     reader.readAsDataURL(file);
   };
@@ -139,7 +152,7 @@ export function Payment() {
             </div>
             <h1 className="text-app-text font-bold text-xl mb-1 text-center">Payment Successful</h1>
             <p className="text-app-text-muted text-sm mb-6 text-center">
-              Use these credentials to sign in to your RelayX dashboard
+              {generating ? 'Verifying your payment and generating access credentials...' : 'Use these credentials to sign in to your RelayX dashboard'}
             </p>
             {uploadError && (
               <p className="text-amber-400 text-xs text-center mb-4">{uploadError}</p>
@@ -153,7 +166,16 @@ export function Payment() {
               />
             </div>
 
-            <div className="space-y-3">
+            {generating ? (
+              <div className="flex flex-col items-center justify-center gap-3 py-6">
+                <div className="relative w-12 h-12">
+                  <Loader2 className="w-12 h-12 text-[#25D366] animate-spin" />
+                  <KeyRound className="w-5 h-5 text-[#25D366] absolute inset-0 m-auto" />
+                </div>
+                <p className="text-app-text-secondary text-sm animate-pulse">Generating your login credentials...</p>
+              </div>
+            ) : credentialsReady && (
+            <div className="space-y-3 animate-fade-in">
               <div className="p-3 rounded-lg bg-app-bg border border-app-border flex items-center justify-between">
                 <div>
                   <p className="text-app-text-muted text-xs">Username</p>
@@ -174,13 +196,16 @@ export function Payment() {
               </div>
               {copied && <p className="text-emerald-400 text-xs text-center">Copied to clipboard!</p>}
             </div>
+            )}
 
+            {credentialsReady && (
             <Link
               to="/login"
               className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#25D366] text-white font-medium text-sm hover:bg-[#1fb855] transition-colors"
             >
               Continue to Login
             </Link>
+            )}
           </div>
         </div>
       )}

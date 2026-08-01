@@ -155,7 +155,7 @@ export function Settings() {
           <div className="p-3 rounded-lg bg-app-bg border border-app-border">
             <p className="text-app-text-secondary">
               <span className="text-app-text font-medium">Env variable:</span>{' '}
-              <code className="px-1.5 py-0.5 rounded bg-[#1e2532] text-[#25D366] text-xs">WAHA_API_KEY=f07d255624d14f74a4b5239c718122a4</code>
+              <code className="px-1.5 py-0.5 rounded bg-[#1e2532] text-[#25D366] text-xs">API_KEY=f07d255624d14f74a4b5239c718122a4</code>
             </p>
           </div>
         </div>
