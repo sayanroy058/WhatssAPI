@@ -66,7 +66,6 @@ export function Home() {
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/20">
               <img src={Logo} alt="RelayX Logo" className="w-7 h-7" />
             </div>
-            <span className="text-app-text font-bold text-lg">RelayX</span>
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm text-app-text-secondary">
             <a href="#features" className="hover:text-app-text transition-colors">Features</a>
