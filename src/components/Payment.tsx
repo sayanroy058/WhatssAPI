@@ -152,7 +152,7 @@ export function Payment() {
             </div>
             <h1 className="text-app-text font-bold text-xl mb-1 text-center">Payment Successful</h1>
             <p className="text-app-text-muted text-sm mb-6 text-center">
-              {generating ? 'Verifying your payment and generating access credentials...' : 'Use these credentials to sign in to your RelayX dashboard'}
+              {generating ? 'Verifying your payment and generating access credentials...' : 'Generating credentials to sign in to your RelayX dashboard - Stay on the Same Page. Don\'t Leave.'}
             </p>
             {uploadError && (
               <p className="text-amber-400 text-xs text-center mb-4">{uploadError}</p>
