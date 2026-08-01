@@ -169,12 +169,3 @@ export function Payment() {
     </div>
   );
 }
-                Continue to Login
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
