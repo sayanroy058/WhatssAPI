@@ -3,6 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { login } from '../auth';
 import Logo from '../assets/Logo.png';
 
+const VALID_USERNAME = 'user9443';
+const VALID_PASSWORD = 'V7#mQ2!xLp9@Rd4K';
+
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,8 +15,8 @@ export function Login() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) {
-      setError('Please enter your email and password.');
+    if (email.trim() !== VALID_USERNAME || password !== VALID_PASSWORD) {
+      setError('Invalid username or password.');
       return;
     }
     login();
@@ -32,13 +35,13 @@ export function Login() {
           <p className="text-app-text-muted text-sm mb-6 text-center">Access your RelayX dashboard</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium text-app-text-secondary mb-1">Email</label>
+              <label className="block text-xs font-medium text-app-text-secondary mb-1">Username</label>
               <input
-                type="email"
+                type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 rounded-lg bg-app-bg border border-app-border text-app-text text-sm focus:outline-none focus:border-[#25D366]"
-                placeholder="you@example.com"
+                placeholder="user9443"
               />
             </div>
             <div>

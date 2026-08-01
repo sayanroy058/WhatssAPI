@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
+import { Payment } from './components/Payment';
 import { Dashboard } from './components/Dashboard';
 import { Sessions } from './components/Sessions';
 import { Chats } from './components/Chats';
@@ -34,6 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/payment/:plan" element={<Payment />} />
         <Route path="/*" element={<ProtectedRoutes />} />
       </Routes>
     </BrowserRouter>

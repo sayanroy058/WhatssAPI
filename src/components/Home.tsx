@@ -189,7 +189,7 @@ export function Home() {
               </p>
 
               <Link
-                to="/dashboard"
+                to="/payment/monthly"
                 className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-app-surface border border-app-border text-app-text font-semibold hover:border-app-border-hover transition-colors"
               >
                 Subscribe Monthly
@@ -228,7 +228,7 @@ export function Home() {
               </p>
 
               <Link
-                to="/dashboard"
+                to="/payment/yearly"
                 className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-semibold hover:bg-[#1fb855] transition-colors shadow-lg shadow-[#25D366]/30"
               >
                 Subscribe Yearly
@@ -261,7 +261,7 @@ export function Home() {
             Get unlimited WhatsApp messages, full API access, and priority support — all for ₹1200/month.
           </p>
           <Link
-            to="/dashboard"
+            to="/payment/monthly"
             className="mt-7 inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-white text-[#128C7E] font-semibold hover:bg-white/90 transition-colors"
           >
             Get Started for ₹1200/month
