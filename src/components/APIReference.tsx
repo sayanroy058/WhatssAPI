@@ -18,7 +18,7 @@ interface Category {
   endpoints: Endpoint[];
 }
 
-const DOCS_API_BASE_URL = 'https://whatssapi.vercel.app';
+const DOCS_API_BASE_URL = 'https://relayx-api.vercel.app';
 
 const replaceDocsBaseUrl = (value: string) => value.replace(/http:\/\/localhost:3000/g, DOCS_API_BASE_URL);
 
