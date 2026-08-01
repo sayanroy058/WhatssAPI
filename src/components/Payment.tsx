@@ -5,7 +5,7 @@ import Logo from '../assets/Logo.png';
 import MonthlyQR from '../assets/Monthly QR.png';
 import YearlyQR from '../assets/Yearly QR.png';
 
-const WAIT_SECONDS = 50;
+const WAIT_SECONDS = 20;
 
 const planFeatures = [
   'Unlimited WhatsApp messages',
