@@ -43,8 +43,8 @@ export function Payment() {
   };
 
   return (
-    <div className="min-h-screen bg-app-bg flex items-center justify-center p-4">
-      <div className="w-full max-w-lg">
+    <div className="min-h-screen bg-app-bg flex flex-col items-center py-10 px-4">
+      <div className="w-full max-w-3xl">
         <div className="flex justify-center mb-6">
           <img src={Logo} alt="RelayX Logo" className="h-10 w-auto" />
         </div>
@@ -63,7 +63,7 @@ export function Payment() {
                 <img
                   src={isYearly ? YearlyQR : MonthlyQR}
                   alt={`${isYearly ? 'Yearly' : 'Monthly'} payment QR code`}
-                  className="w-80 h-80 rounded-xl border border-app-border object-contain bg-white p-3"
+                  className="max-w-full h-auto rounded-xl border border-app-border bg-white p-3"
                 />
               </div>
 
@@ -98,7 +98,7 @@ export function Payment() {
                 <img
                   src={screenshot}
                   alt="Uploaded payment screenshot"
-                  className="w-40 h-40 rounded-xl border border-app-border object-cover"
+                  className="max-w-full h-auto rounded-xl border border-app-border"
                 />
               </div>
 
