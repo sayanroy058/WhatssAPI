@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/upload",
+      "destination": "/api/upload"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "https://t294tp-app.tr.caasify.in/api/$1"
     },
