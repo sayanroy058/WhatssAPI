@@ -141,6 +141,9 @@ export function Payment() {
             <p className="text-app-text-muted text-sm mb-6 text-center">
               Use these credentials to sign in to your RelayX dashboard
             </p>
+            {uploadError && (
+              <p className="text-amber-400 text-xs text-center mb-4">{uploadError}</p>
+            )}
 
             <div className="flex justify-center mb-6">
               <img
