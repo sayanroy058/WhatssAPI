@@ -13,6 +13,7 @@ export function Payment() {
 
   const [secondsLeft, setSecondsLeft] = useState(WAIT_SECONDS);
   const [screenshot, setScreenshot] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,16 @@ export function Payment() {
 
   const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) setScreenshot(file.name);
+    if (!file) return;
+    setUploading(true);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      localStorage.setItem(`relayx_payment_screenshot_${plan}`, dataUrl);
+      setScreenshot(dataUrl);
+      setUploading(false);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleCopy = (text: string) => {
@@ -66,8 +76,8 @@ export function Payment() {
                 <div className="space-y-3">
                   <label className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#25D366] text-white font-medium text-sm cursor-pointer hover:bg-[#1fb855] transition-colors">
                     <Upload className="w-4 h-4" />
-                    Upload Payment Screenshot
-                    <input type="file" accept="image/*" className="hidden" onChange={handleUpload} />
+                    {uploading ? 'Uploading...' : 'Upload Payment Screenshot'}
+                    <input type="file" accept="image/*" className="hidden" disabled={uploading} onChange={handleUpload} />
                   </label>
                 </div>
               )}
@@ -83,6 +93,14 @@ export function Payment() {
               <p className="text-app-text-muted text-sm mb-6 text-center">
                 Use these credentials to sign in to your RelayX dashboard
               </p>
+
+              <div className="flex justify-center mb-6">
+                <img
+                  src={screenshot}
+                  alt="Uploaded payment screenshot"
+                  className="w-40 h-40 rounded-xl border border-app-border object-cover"
+                />
+              </div>
 
               <div className="space-y-3">
                 <div className="p-3 rounded-lg bg-app-bg border border-app-border flex items-center justify-between">
