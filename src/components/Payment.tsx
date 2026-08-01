@@ -25,6 +25,7 @@ export function Payment() {
   const [secondsLeft, setSecondsLeft] = useState(WAIT_SECONDS);
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -37,18 +38,24 @@ export function Payment() {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
+    setUploadError(null);
     const reader = new FileReader();
     reader.onload = async () => {
       const dataUrl = reader.result as string;
       setScreenshot(dataUrl);
       try {
-        await fetch('/api/upload', {
+        const res = await fetch('/api/upload', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ plan, dataUrl }),
         });
-      } catch {
-        // Upload failed silently; the local preview is still shown to the user.
+        if (!res.ok) {
+          const body = await res.text();
+          throw new Error(`${res.status}: ${body}`);
+        }
+      } catch (err) {
+        console.error('Failed to upload payment screenshot to Blob storage:', err);
+        setUploadError('Could not save the screenshot to storage. It is only visible in this browser session.');
       }
       setUploading(false);
     };
