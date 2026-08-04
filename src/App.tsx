@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
@@ -38,6 +39,7 @@ function App() {
         <Route path="/payment/:plan" element={<Payment />} />
         <Route path="/*" element={<ProtectedRoutes />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
